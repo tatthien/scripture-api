@@ -2,7 +2,7 @@ import express from "express";
 import versesRouter from "./routes/verses";
 
 const app = express();
-const port = 4444;
+const port = process.env.APP_PORT || 3000
 
 app.use(express.json());
 
@@ -17,5 +17,5 @@ app.get("/health", (req, res) => {
 app.use("/verses", versesRouter);
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${process.env.APP_PORT}`);
+  console.log(`Server running at http://localhost:${port}`);
 });
