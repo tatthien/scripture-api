@@ -3,7 +3,6 @@ import Ajv, { type JSONSchemaType } from "ajv";
 import { db } from "../db";
 import { parseAddress } from "../utils/parseAddress";
 import { getBookIdFromAbbr } from "../utils/getBookIdFromAbbr";
-import * as changeKeys from "change-case/keys";
 
 const router = Router();
 const ajv = new Ajv();
@@ -25,7 +24,7 @@ const validateQuery = ajv.compile(querySchema);
 
 type Verse = {
   id: number;
-  bookId: number;
+  book_id: number;
   chapter: number;
   text: string;
   verse: number;
@@ -66,7 +65,7 @@ router.get("/", (req, res) => {
         .all(bookId, chapter, verseFrom, verseTo) as Verse[];
     }
 
-    res.json(changeKeys.camelCase(rows));
+    res.json(rows);
   } catch (err: any) {
     res.status(400).json({ error: err.message });
     return;
