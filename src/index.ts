@@ -10,6 +10,10 @@ app.get("/", (req, res) => {
   res.json({ message: "Hello World!" });
 });
 
+app.get("/health", (req, res) => {
+  res.json({ message: "OK" });
+});
+
 app.use("/verses", versesRouter);
 
 app.listen(port, () => {
