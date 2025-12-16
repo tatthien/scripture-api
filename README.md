@@ -23,16 +23,10 @@ Run the container:
 
 ```bash
 docker run -p 3000:3000 scripture-api
-```
 
-With custom port:
-
-```bash
+# With custom port:
 docker run -e APP_PORT=8080 -p 8080:8080 scripture-api
-```
 
-With env file:
-
-```bash
+# With env file:
 docker run --env-file .env.production -p 3000:3000 scripture-api
 ```
