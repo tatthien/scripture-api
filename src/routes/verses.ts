@@ -11,16 +11,16 @@ type QueryParams = {
   address: string;
 };
 
-const querySchema: JSONSchemaType<QueryParams> = {
-  type: "object",
-  properties: {
-    address: { type: "string", minLength: 1 },
-  },
-  required: ["address"],
-  additionalProperties: true,
-};
+// const querySchema: JSONSchemaType<QueryParams> = {
+//   type: "object",
+//   properties: {
+//     address: { type: "string", minLength: 1 },
+//   },
+//   required: ["address"],
+//   additionalProperties: true,
+// };
 
-const validateQuery = ajv.compile(querySchema);
+// const validateQuery = ajv.compile(querySchema);
 
 type Verse = {
   id: number;
@@ -30,13 +30,8 @@ type Verse = {
   verse: number;
 };
 
-router.get("/", (req, res) => {
-  if (!validateQuery(req.query)) {
-    res.status(400).json({ error: validateQuery.errors });
-    return;
-  }
-
-  const { address } = req.query;
+router.get("/:address", (req, res) => {
+  const { address } = req.params;
 
   try {
     const { book, chapter, verseFrom, verseTo } = parseAddress(address);
