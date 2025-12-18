@@ -1,3 +1,4 @@
+import cors from "cors";
 import express from "express";
 import pino from "pino";
 import pinoHttp from "pino-http";
@@ -16,6 +17,7 @@ const logger = pino({
 const app = express();
 const port = process.env.APP_PORT || 3000
 
+app.use(cors());
 app.use(pinoHttp({ logger }));
 app.use(express.json());
 
