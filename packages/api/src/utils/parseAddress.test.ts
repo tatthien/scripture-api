@@ -5,7 +5,7 @@ describe('parseAddress', () => {
   describe('valid addresses', () => {
     it('parses book and chapter only', () => {
       expect(parseAddress('John 3')).toEqual({
-        book: 'John',
+        bookAbbr: 'John',
         chapter: 3,
         verseFrom: undefined,
         verseTo: undefined,
@@ -14,7 +14,7 @@ describe('parseAddress', () => {
 
     it('parses book, chapter, and single verse', () => {
       expect(parseAddress('John 3:16')).toEqual({
-        book: 'John',
+        bookAbbr: 'John',
         chapter: 3,
         verseFrom: 16,
         verseTo: undefined,
@@ -23,7 +23,7 @@ describe('parseAddress', () => {
 
     it('parses book, chapter, and verse range', () => {
       expect(parseAddress('John 3:16-17')).toEqual({
-        book: 'John',
+        bookAbbr: 'John',
         chapter: 3,
         verseFrom: 16,
         verseTo: 17,
@@ -32,7 +32,7 @@ describe('parseAddress', () => {
 
     it('parses numbered books (e.g., 1John)', () => {
       expect(parseAddress('1John 1:1')).toEqual({
-        book: '1John',
+        bookAbbr: '1John',
         chapter: 1,
         verseFrom: 1,
         verseTo: undefined,
@@ -41,7 +41,7 @@ describe('parseAddress', () => {
 
     it('parses numbered books with verse range', () => {
       expect(parseAddress('2Corinthians 5:17-21')).toEqual({
-        book: '2Corinthians',
+        bookAbbr: '2Corinthians',
         chapter: 5,
         verseFrom: 17,
         verseTo: 21,
@@ -50,7 +50,7 @@ describe('parseAddress', () => {
 
     it('trims whitespace from input', () => {
       expect(parseAddress('  John 3:16  ')).toEqual({
-        book: 'John',
+        bookAbbr: 'John',
         chapter: 3,
         verseFrom: 16,
         verseTo: undefined,

@@ -2,7 +2,8 @@ import { Router } from "express";
 import Ajv, { type JSONSchemaType } from "ajv";
 import { db } from "../db";
 import { parseAddress } from "../utils/parseAddress";
-import { getBookIdFromAbbr } from "../utils/getBookIdFromAbbr";
+import { getBookFromAbbr } from '@writeforchrist/bible-book-map'
+import { buildAddress } from "../utils/buildAddress";
 
 const router = Router();
 const ajv = new Ajv();
@@ -19,8 +20,8 @@ router.get("/:address", (req, res) => {
   const { address } = req.params;
 
   try {
-    const { book, chapter, verseFrom, verseTo } = parseAddress(address);
-    const bookId = getBookIdFromAbbr(book);
+    const { bookAbbr, chapter, verseFrom, verseTo } = parseAddress(address);
+    const { bookId, bookName } = getBookFromAbbr(bookAbbr)
     let rows: Verse[] = [];
 
     if (!verseFrom && !verseTo) {
@@ -45,7 +46,10 @@ router.get("/:address", (req, res) => {
         .all(bookId, chapter, verseFrom, verseTo) as Verse[];
     }
 
-    res.json(rows);
+    res.json({
+      reference: buildAddress({ bookName: bookName.vi, chapter, verseFrom, verseTo }),
+      verses: rows,
+    });
   } catch (err: any) {
     res.status(400).json({ error: err.message });
     return;

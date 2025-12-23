@@ -1,7 +1,7 @@
 export const ADDRESS_REGEX = /^(?<book>(?:[0-9]{1})?[A-Za-z]+)\s+(?<chapter>\d+)(?::(?<verseFrom>\d+)?(?:-(?<verseTo>\d+))?)?$/;
 
-type Address = {
-  book: string;
+export type Address = {
+  bookAbbr: string;
   chapter: number;
   verseFrom?: number;
   verseTo?: number;
@@ -17,7 +17,7 @@ export function parseAddress(address: string): Address {
     const verseTo = match[4] ? Number(match[4]) : undefined;
 
     return {
-      book: match[1],
+      bookAbbr: match[1],
       chapter: Number(match[2]),
       verseFrom,
       verseTo,
