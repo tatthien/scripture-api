@@ -6,11 +6,11 @@
       "name": "bible-kit",
     },
     "packages/api": {
-      "name": "scripture-api",
+      "name": "@heythien/scripture-api",
       "dependencies": {
+        "@heythien/bible-book-map": "workspace:*",
         "@types/cors": "^2.8.19",
         "@types/express": "^5.0.6",
-        "@writeforchrist/bible-book-map": "^1.0.3",
         "ajv": "^8.17.1",
         "cors": "^2.8.5",
         "express": "^5.2.1",
@@ -26,7 +26,7 @@
       },
     },
     "packages/bible-book-map": {
-      "name": "@writeforchrist/bible-book-map",
+      "name": "@heythien/bible-book-map",
       "version": "1.0.3",
       "devDependencies": {
         "@types/bun": "latest",
@@ -37,6 +37,10 @@
     },
   },
   "packages": {
+    "@heythien/bible-book-map": ["@heythien/bible-book-map@workspace:packages/bible-book-map"],
+
+    "@heythien/scripture-api": ["@heythien/scripture-api@workspace:packages/api"],
+
     "@pinojs/redact": ["@pinojs/redact@0.4.0", "", {}, "sha512-k2ENnmBugE/rzQfEcdWHcCY+/FM3VLzH9cYEsbdsoqrvzAKRhUZeRNhAZvB8OitQJ1TBed3yqWtdjzS6wJKBwg=="],
 
     "@types/body-parser": ["@types/body-parser@1.19.6", "", { "dependencies": { "@types/connect": "*", "@types/node": "*" } }, "sha512-HLFeCYgz89uk22N5Qg3dvGvsv46B8GLvKKo1zKG4NybA8U2DiEO3w9lqGg29t/tfLRJpJ6iQxnVw4OnB7MoM9g=="],
@@ -62,8 +66,6 @@
     "@types/send": ["@types/send@1.2.1", "", { "dependencies": { "@types/node": "*" } }, "sha512-arsCikDvlU99zl1g69TcAB3mzZPpxgw0UQnaHeC1Nwb015xp8bknZv5rIfri9xTOcMuaVgvabfIRA7PSZVuZIQ=="],
 
     "@types/serve-static": ["@types/serve-static@2.2.0", "", { "dependencies": { "@types/http-errors": "*", "@types/node": "*" } }, "sha512-8mam4H1NHLtu7nmtalF7eyBH14QyOASmcxHhSfEoRyr0nP/YdoesEtU+uSRvMe96TW/HPTtkoKqQLl53N7UXMQ=="],
-
-    "@writeforchrist/bible-book-map": ["@writeforchrist/bible-book-map@workspace:packages/bible-book-map"],
 
     "accepts": ["accepts@2.0.0", "", { "dependencies": { "mime-types": "^3.0.0", "negotiator": "^1.0.0" } }, "sha512-5cvg6CtKwfgdmVqY1WIiXKc3Q1bkRqGLi+2W/6ao+6Y7gu/RCwRuAhGEzh5B4KlszSuTLgZYuqFqo5bImjNKng=="],
 
@@ -227,8 +229,6 @@
 
     "safer-buffer": ["safer-buffer@2.1.2", "", {}, "sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg=="],
 
-    "scripture-api": ["scripture-api@workspace:packages/api"],
-
     "secure-json-parse": ["secure-json-parse@4.1.0", "", {}, "sha512-l4KnYfEyqYJxDwlNVyRfO2E4NTHfMKAWdUuA8J0yve2Dz/E/PdBepY03RvyJpssIpRFwJoCD55wA+mEDs6ByWA=="],
 
     "send": ["send@1.2.1", "", { "dependencies": { "debug": "^4.4.3", "encodeurl": "^2.0.0", "escape-html": "^1.0.3", "etag": "^1.8.1", "fresh": "^2.0.0", "http-errors": "^2.0.1", "mime-types": "^3.0.2", "ms": "^2.1.3", "on-finished": "^2.4.1", "range-parser": "^1.2.1", "statuses": "^2.0.2" } }, "sha512-1gnZf7DFcoIcajTjTwjwuDjzuz4PPcY2StKPlsGAQ1+YH20IRVrBaXSWmdjowTJ6u8Rc01PoYOGHXfP1mYcZNQ=="],
@@ -270,7 +270,5 @@
     "wrappy": ["wrappy@1.0.2", "", {}, "sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ=="],
 
     "pino-pretty/pino-abstract-transport": ["pino-abstract-transport@3.0.0", "", { "dependencies": { "split2": "^4.0.0" } }, "sha512-wlfUczU+n7Hy/Ha5j9a/gZNy7We5+cXp8YL+X+PG8S0KXxw7n/JXA3c46Y0zQznIJ83URJiwy7Lh56WLokNuxg=="],
-
-    "scripture-api/@writeforchrist/bible-book-map": ["@writeforchrist/bible-book-map@1.0.3", "", { "peerDependencies": { "typescript": "^5" } }, "sha512-L9p34c9IgOIvsEH0nz9CnJj7Zvd/aj6DxIbeFGoFYOhFvgD54gZ6/wHFpj7Vp5RVXvRoo3D/cWT3J9pXH1gvUg=="],
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@writeforchrist/bible-book-map",
+  "name": "@heythien/bible-book-map",
   "version": "1.0.3",
   "module": "index.ts",
   "type": "module",

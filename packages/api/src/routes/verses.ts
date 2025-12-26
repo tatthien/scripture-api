@@ -2,7 +2,7 @@ import { Router } from "express";
 import Ajv, { type JSONSchemaType } from "ajv";
 import { db } from "../db";
 import { parseAddress } from "../utils/parseAddress";
-import { getBookFromAbbr } from '@writeforchrist/bible-book-map'
+import { getBookFromAbbr } from '@heythien/bible-book-map'
 import { buildAddress } from "../utils/buildAddress";
 
 const router = Router();
