@@ -10,7 +10,7 @@
       "dependencies": {
         "@types/cors": "^2.8.19",
         "@types/express": "^5.0.6",
-        "@writeforchrist/bible-book-map": "^1.0.2",
+        "@writeforchrist/bible-book-map": "^1.0.3",
         "ajv": "^8.17.1",
         "cors": "^2.8.5",
         "express": "^5.2.1",
@@ -27,7 +27,7 @@
     },
     "packages/bible-book-map": {
       "name": "@writeforchrist/bible-book-map",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "devDependencies": {
         "@types/bun": "latest",
       },
@@ -270,5 +270,7 @@
     "wrappy": ["wrappy@1.0.2", "", {}, "sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ=="],
 
     "pino-pretty/pino-abstract-transport": ["pino-abstract-transport@3.0.0", "", { "dependencies": { "split2": "^4.0.0" } }, "sha512-wlfUczU+n7Hy/Ha5j9a/gZNy7We5+cXp8YL+X+PG8S0KXxw7n/JXA3c46Y0zQznIJ83URJiwy7Lh56WLokNuxg=="],
+
+    "scripture-api/@writeforchrist/bible-book-map": ["@writeforchrist/bible-book-map@1.0.3", "", { "peerDependencies": { "typescript": "^5" } }, "sha512-L9p34c9IgOIvsEH0nz9CnJj7Zvd/aj6DxIbeFGoFYOhFvgD54gZ6/wHFpj7Vp5RVXvRoo3D/cWT3J9pXH1gvUg=="],
   }
 }
