@@ -1,5 +1,5 @@
-docker-build:
-	docker build -t scripture-api .
+docker-build-api:
+	docker build -t scripture-api -f packages/api/Dockerfile .
 
 docker-run:
 	docker stop scripture-api 
