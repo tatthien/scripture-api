@@ -2,7 +2,7 @@ import { Router } from "express";
 import Ajv, { type JSONSchemaType } from "ajv";
 import { db } from "../db";
 import { parseAddress } from "../utils/parseAddress";
-import { getBookFromAbbr } from '@heythien/bible-book-map'
+import { getBookFromAbbr, getBookFromId } from '@heythien/bible-book-map'
 import { buildAddress } from "../utils/buildAddress";
 
 const router = Router();
@@ -80,12 +80,24 @@ router.post('/fts', (req, res) => {
     const { query } = req.body as FtsPayload
     const sanitizedQuery = query.replace(/[.,!@#$%^&*()-]/g, '')
     const body = db.prepare(`
-      SELECT id, book_id, chapter, verse, highlight(verses_fts, 1, '<b>', '</br>') as text, rank FROM verses as v
+      SELECT id, book_id, chapter, verse, highlight(verses_fts, 1, '<b>', '</b>') as text, rank FROM verses as v
       INNER JOIN verses_fts as s ON s.row_id = v.id
       WHERE verses_fts MATCH ?
       ORDER BY rank;
   `).all(sanitizedQuery) as Verse[]
-    res.status(200).json(body)
+    const enrichedBody = body.map((data) => {
+      const book = getBookFromId(data.book_id)
+      if (!book) return data
+      return {
+        ...data,
+        reference: buildAddress({
+          bookName: book.bookName.vi,
+          chapter: data.chapter,
+          verseFrom: data.verse,
+        })
+      }
+    })
+    res.status(200).json(enrichedBody)
   } catch (err: any) {
     res.status(400).json({ error: err.message })
   }
