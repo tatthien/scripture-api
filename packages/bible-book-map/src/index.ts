@@ -4,3 +4,4 @@ export {
 } from './types'
 
 export { getBookFromAbbr } from './utils/getBookFromAbbr'
+export { getBookFromId } from './utils/getBookFromId'
