@@ -80,7 +80,7 @@ router.post('/fts', (req, res) => {
     const { query } = req.body as FtsPayload
     const sanitizedQuery = query.replace(/[.,!@#$%^&*()-]/g, '')
     const body = db.prepare(`
-      SELECT id, book_id, chapter, verse, highlight(verses_fts, 1, '<b>', '</b>') as text, rank FROM verses as v
+      SELECT id, book_id, chapter, verse, v.text, highlight(verses_fts, 1, '<b>', '</b>') as highlighted_text, rank FROM verses as v
       INNER JOIN verses_fts as s ON s.row_id = v.id
       WHERE verses_fts MATCH ?
       ORDER BY rank;
