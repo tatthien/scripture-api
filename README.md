@@ -7,6 +7,8 @@ This monorepo includes:
 - `@heythien/scripture-api` — HTTP API for verse lookup and full-text search
 - `@heythien/bible-book-map` — Vietnamese/English book names and abbreviations
 
+**Disclaimer**: This project is non-commercial and I don't own the copyright of the Bible. It primarily serves as the API for my [Obsidian plugin](https://github.com/tatthien/obsidian-bible-kit).
+
 ## Endpoints
 
 ### Verse lookup
