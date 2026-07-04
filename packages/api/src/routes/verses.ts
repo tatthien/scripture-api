@@ -48,7 +48,14 @@ router.get("/:address", (req, res) => {
 
     res.json({
       reference: buildAddress({ bookName: bookName.vi, chapter, verseFrom, verseTo }),
-      verses: rows,
+      verses: rows.map((row) => ({
+        ...row,
+        reference: buildAddress({
+          bookName: bookName.vi,
+          chapter: row.chapter,
+          verseFrom: row.verse,
+        }),
+      })),
     });
   } catch (err: any) {
     res.status(400).json({ error: err.message });
